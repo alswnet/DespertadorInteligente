@@ -1,0 +1,16 @@
+{
+  "name": "despertadorinteligente",
+  "version": "1.0.0",
+  "description": "",
+  "main": "DespertadorInteligente.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "chepecarlos",
+  "license": "ISC",
+  "dependencies": {
+    "date-and-time": "^0.6.3",
+    "mqtt": "^2.18.8",
+    "node-telegram-bot-api": "^0.30.0"
+  }
+}
