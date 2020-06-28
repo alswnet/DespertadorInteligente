@@ -1,3 +1,5 @@
+int TiempoBonbaActiva = 60;
+
 boolean EstadoAlarma = false;
 boolean EstadoBonba = false;
 int HoraAlarma = -1;
@@ -59,8 +61,8 @@ int ActualMinuto() {
 
 void CambiarBonba(boolean Estado) {
   if (Estado) {
-    digitalWrite(PinBomba, 1);
     TiempoBonba = millis();
+    digitalWrite(PinBomba, 1);
   }
   else {
     digitalWrite(PinBomba, 0);
@@ -73,8 +75,7 @@ boolean ObtenerBonba() {
 }
 
 void ActualizarAlarma() {
-
-  if (digitalRead(PinBoton) == 1) {
+  if (digitalRead(PinBoton) == LOW) {
     digitalWrite(PinBomba, 0);
     Serial.println("Apagnado Alarma");
     while (digitalRead(PinBoton) == 1) {
@@ -97,7 +98,7 @@ void ActualizarAlarma() {
   }
 
   if (EstadoBonba) {
-    if (millis() - TiempoBonba > 1000 * 60) {
+    if (millis() - TiempoBonba > 1000 * TiempoBonbaActiva) {
       EstadoBonba = false;
       Serial.println("Sistema AutoApagado");
       digitalWrite(PinBomba, 0);

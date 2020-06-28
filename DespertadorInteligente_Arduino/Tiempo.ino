@@ -5,7 +5,6 @@ unsigned long lastNTPResponse = millis();
 uint32_t timeUNIX = 0;
 unsigned long prevActualTime = 0;
 
-
 WiFiUDP UDP;
 IPAddress timeServerIP;
 const char* NTPServerName = "0.north-america.pool.ntp.org";
@@ -16,9 +15,7 @@ int Diferente = 18;
 void ConfigurarTiempo() {
   if (Estado[Wifi] >= Conectado && Estado[Tiempo] == NoConfigurado) {
     Serial.println("Condigurarando Tiempo UDP");
-
     startUDP();
-
     if (!WiFi.hostByName(NTPServerName, timeServerIP)) { // Get the IP address of the NTP server
       Serial.println("DNS lookup failed. Rebooting.");
       Serial.flush();
@@ -34,14 +31,12 @@ void ConfigurarTiempo() {
   }
 }
 
-
 void startUDP() {
   Serial.println("Empezando UDP");
   UDP.begin(123);
 }
 
 uint32_t getTime() {
-
   if (UDP.parsePacket() == 0) { // If there's no response (yet)
     return 0;
   }
@@ -101,9 +96,6 @@ void ActualizarTiempo() {
      }
   }
 }
-
-
-
 
 inline int getSeconds(uint32_t UNIXTime) {
   return UNIXTime % 60;

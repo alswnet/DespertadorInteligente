@@ -2,8 +2,9 @@ const TelegramBot = require('node-telegram-bot-api');
 let date = require('date-and-time');
 var mqtt = require('mqtt');
 const fs = require('fs');
+let token = require('./Token.js')
 var Estado = 0;
-const token = '520821559:AAHYQSi0MiXtQlckbkkO8oqSye7BZoMGeG0';
+//const token = '520821559:AAHYQSi0MiXtQlckbkkO8oqSye7BZoMGeG0';
 const bot = new TelegramBot(token, {
   polling: true
 });
